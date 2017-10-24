@@ -21,8 +21,8 @@ import models.User;
 
 public class PacemakerAPI
 {
-  private Map<Long, User>     userIndex       = new HashMap<>();
   private Map<String, User>   emailIndex      = new HashMap<>();
+  private Map<String, User>     userIndex     = new HashMap<>();
   private Map<Long, Activity> activitiesIndex = new HashMap<>();
       
   private Serializer serializer;
@@ -36,9 +36,9 @@ public class PacemakerAPI
   void load() throws Exception
   {
     serializer.read();
-    userIndex       = (Map<Long, User>)     serializer.pop();
-    emailIndex      = (Map<String, User>)   serializer.pop();
     activitiesIndex = (Map<Long, Activity>) serializer.pop();
+    emailIndex      = (Map<String, User>)   serializer.pop();
+    userIndex       = (Map<String, User>)   serializer.pop();
   }
   
   void store() throws Exception
@@ -73,26 +73,28 @@ public class PacemakerAPI
     return emailIndex.get(email);
   }
 
-  public User getUser(Long id) 
+  public User getUser(String id) 
   {
     return userIndex.get(id);
   }
 
-  public void deleteUser(Long id) 
+  public void deleteUser(String id) 
   {
     User user = userIndex.remove(id);
     emailIndex.remove(user.email);
   }
   
-  public void createActivity(Long id, String type, String location, double distance)
+  public Activity createActivity(String id, String type, String location, double distance)
   {
-    Activity activity = new Activity (type, location, distance);
+    Activity activity = null;
     Optional<User> user = Optional.fromNullable(userIndex.get(id));
     if (user.isPresent())
     {
+      activity = new Activity (type, location, distance);
       user.get().activities.put(activity.id, activity);
       activitiesIndex.put(activity.id, activity);
     }
+    return activity;
   }
   
   public Activity getActivity (Long id)
