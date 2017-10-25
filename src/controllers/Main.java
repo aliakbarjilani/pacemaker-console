@@ -17,7 +17,6 @@ import com.google.common.base.Optional;
 
 public class Main
 {
-  // Main PacemakerAPI object.
   public PacemakerAPI paceApi;
   
   public Main() throws Exception
