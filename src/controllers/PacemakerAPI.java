@@ -1,15 +1,15 @@
 package controllers;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+//import java.io.File;
+//import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
 import java.util.Collection;
 
 import com.google.common.base.Optional;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+//import com.thoughtworks.xstream.XStream;
+//import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ import models.User;
 public class PacemakerAPI
 {
   private Map<String, User>   emailIndex      = new HashMap<>();
-  private Map<String, User>     userIndex     = new HashMap<>();
+  private Map<String, User>   userIndex       = new HashMap<>();
   private Map<Long, Activity> activitiesIndex = new HashMap<>();
       
   private Serializer serializer;

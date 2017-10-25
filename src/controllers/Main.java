@@ -17,6 +17,7 @@ import com.google.common.base.Optional;
 
 public class Main
 {
+  // Main PacemakerAPI object.
   public PacemakerAPI paceApi;
   
   public Main() throws Exception
@@ -36,6 +37,7 @@ public class Main
                           @Param(name="email")      String email,     @Param(name="password")  String password)
   {
     paceApi.createUser(firstName, lastName, email, password);
+    //Print.printNoData("User created successfully with id : "+id);
   }
   
   @Command(description="Get a Users detail")
@@ -63,7 +65,7 @@ public class Main
   }
   
   @Command(description="Add an activity")
-  public void addActivity (@Param(name="user-id")  Long   id,       @Param(name="type") String type, 
+  public void addActivity (@Param(name="user-id")  String   id,     @Param(name="type") String type, 
                            @Param(name="location") String location, @Param(name="distance") double distance)
   {
     Optional<User> user = Optional.fromNullable(paceApi.getUser(id));

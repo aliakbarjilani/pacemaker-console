@@ -42,8 +42,8 @@ public class User implements Serializable
     return toStringHelper(this).addValue(id)
                                .addValue(firstName)
                                .addValue(lastName)
+                               .addValue(email)
                                .addValue(password)
-                               .addValue(email)  
                                .addValue(activities)
                                .toString();
   }
